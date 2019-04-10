@@ -14,7 +14,7 @@ namespace Microwave.Test.Integration
         [Test]
         public void test()
         {
-            Assert.That(true, Is.True);
+            Assert.That(true, !Is.False);
         }
     }
 }
