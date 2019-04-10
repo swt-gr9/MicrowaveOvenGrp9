@@ -1,6 +1,10 @@
 ﻿using System;
-using NUnit;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using NUnit.Framework;
+using NUnit.Framework.Internal;
 
 namespace Microwave.Test.Integration
 {
@@ -8,9 +12,9 @@ namespace Microwave.Test.Integration
     public class Class1
     {
         [Test]
-        public void Test()
+        public void test()
         {
-            Assert.That(true,Is.True);
+            Assert.That(true, Is.True);
         }
     }
 }
