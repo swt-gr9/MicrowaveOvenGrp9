@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IT1_UserInterfaceButton.cs" />
+    <Compile Include="IT2_UserInterfaceDoor.cs" />
+    <Compile Include="IT3_UserInterfaceCookController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
