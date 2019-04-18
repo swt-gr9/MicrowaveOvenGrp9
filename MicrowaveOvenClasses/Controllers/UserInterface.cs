@@ -89,8 +89,8 @@ namespace MicrowaveOvenClasses.Controllers
                     myState = States.COOKING;
                     break;
                 case States.COOKING:
-                    powerLevel = 50;
-                    time = 1;
+                    powerLevel = 50;  
+                    time = 1; 
                     myCooker.Stop();
                     myLight.TurnOff();
                     myDisplay.Clear();
