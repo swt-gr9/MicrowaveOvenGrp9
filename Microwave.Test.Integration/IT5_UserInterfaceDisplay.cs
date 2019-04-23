@@ -43,9 +43,22 @@ namespace Microwave.Test.Integration
                 _light,
                 _cookController
                 );
-            _door.Open();
-            _door.Close();
         }
+
+        #region States
+
+        private void SetStateSetPower()
+        {
+            _powerButton.Press();
+        }
+
+        private void SetStateCooking()
+        {
+            SetStateSetPower();
+            _startCancelButton.Press();
+        }
+
+        #endregion
 
         #region MainScenario
 
@@ -64,7 +77,7 @@ namespace Microwave.Test.Integration
         [TestCase(5, 5)]
         public void TestDisplaysCorrectTime(int times, int displayTime)
         {
-            _powerButton.Press();
+            SetStateSetPower();
 
             for(int i = 0; i < times; ++i)
                 _timeButton.Press();
@@ -72,6 +85,13 @@ namespace Microwave.Test.Integration
             _output.Received(1).OutputLine($"Display shows: {displayTime:D2}:{0:D2}");
         }
 
+        [Test]
+        public void TestDisplayClears()
+        {
+            SetStateCooking();
+
+            _output.Received(1).OutputLine($"Display cleared");
+        }
 
         #endregion
 
