@@ -43,19 +43,35 @@ namespace Microwave.Test.Integration
                 _light,
                 _cookController
                 );
+            _door.Open();
+            _door.Close();
         }
 
         #region MainScenario
 
-        [TestCase(50)]
-        public void Test(int power)
+        [TestCase(1, 50)]
+        [TestCase(2, 100)]
+        [TestCase(3, 150)]
+        public void TestDisplaysCorrectPower(int times, int power)
         {
-            _door.Open();
-            _door.Close();
-            _powerButton.Press();
+            for(int i = 0; i < times; ++i)
+                _powerButton.Press();
 
             _output.Received(1).OutputLine($"Display shows: {power} W");
         }
+
+        [TestCase(1, 1)]
+        [TestCase(5, 5)]
+        public void TestDisplaysCorrectTime(int times, int displayTime)
+        {
+            _powerButton.Press();
+
+            for(int i = 0; i < times; ++i)
+                _timeButton.Press();
+
+            _output.Received(1).OutputLine($"Display shows: {displayTime:D2}:{0:D2}");
+        }
+
 
         #endregion
 
