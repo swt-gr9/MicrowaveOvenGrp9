@@ -61,7 +61,7 @@
     <Compile Include="IT2_UserInterfaceDoor.cs" />
     <Compile Include="IT3_UserInterfaceCookController.cs" />
     <Compile Include="IT4_UserInterfaceLight.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IT5_UserInterfaceDisplay.cs" />    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
