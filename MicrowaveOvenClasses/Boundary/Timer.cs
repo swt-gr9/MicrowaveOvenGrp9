@@ -43,8 +43,8 @@ namespace MicrowaveOvenClasses.Boundary
         {
             // One tick has passed
             // Do what I should
-            //changed output from ms til s
-            TimeRemaining -= 1;
+            //FEJL - changed output from ms til s
+            TimeRemaining -= 1; 
             TimerTick?.Invoke(this, EventArgs.Empty);
 
             if (TimeRemaining <= 0)
