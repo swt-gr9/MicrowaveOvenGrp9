@@ -56,5 +56,15 @@ namespace Microwave.Test.Integration
         }
 
         #endregion
+
+        [Test]
+        public void TestTurnsOffWhenButtonPressed()
+        {
+            _uut.StartCooking(50, 120);
+            _uut.Stop();
+
+            _output.Received(1).OutputLine($"PowerTube turned off");
+        }
+       
     }
 }
