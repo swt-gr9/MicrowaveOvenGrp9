@@ -57,6 +57,8 @@ namespace Microwave.Test.Integration
 
         #endregion
 
+        #region Exception
+
         [Test]
         public void TestTurnsOffWhenButtonPressed()
         {
@@ -65,6 +67,10 @@ namespace Microwave.Test.Integration
 
             _output.Received(1).OutputLine($"PowerTube turned off");
         }
-       
+
+        #endregion
+
+
+
     }
 }
