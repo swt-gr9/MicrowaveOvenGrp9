@@ -2,10 +2,12 @@
 using System.Runtime.Serialization;
 using MicrowaveOvenClasses.Interfaces;
 
+
 namespace MicrowaveOvenClasses.Controllers
 {
     public class UserInterface : IUserInterface
     {
+        private readonly double MAX_POWER = 700.0;
         private enum States
         {
             READY, SETPOWER, SETTIME, COOKING, DOOROPEN
@@ -83,7 +85,7 @@ namespace MicrowaveOvenClasses.Controllers
                     myState = States.READY;
                     break;
                 case States.SETTIME:
-                    myDisplay.Clear(); // ??? Mangler på sekvensdiagrammet
+                    myDisplay.Clear(); // FEJL - Mangler på sekvensdiagrammet
                     myLight.TurnOn();
                     myCooker.StartCooking(powerLevel, time*60);
                     myState = States.COOKING;
@@ -122,6 +124,7 @@ namespace MicrowaveOvenClasses.Controllers
                     break;
                 case States.COOKING:
                     myCooker.Stop();
+                    myDisplay.Clear(); //FEJL - Den manglede i koden.
                     powerLevel = 50;
                     time = 1;
                     myState = States.DOOROPEN;

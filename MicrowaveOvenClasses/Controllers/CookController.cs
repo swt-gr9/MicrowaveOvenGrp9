@@ -10,6 +10,7 @@ namespace MicrowaveOvenClasses.Controllers
         public IUserInterface UI { set; private get; }
 
         private bool isCooking = false;
+        private double POWERTUBE_MAX_POWER = 700.0;
 
         private IDisplay myDisplay;
         private IPowerTube myPowerTube;
