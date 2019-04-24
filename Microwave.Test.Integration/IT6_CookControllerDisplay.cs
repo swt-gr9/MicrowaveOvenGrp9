@@ -34,14 +34,25 @@ namespace Microwave.Test.Integration
         }
 
         #region Main Scenario
-        [TestCase(60)]
-        public void TimeRemainingOnTimerTick(int time)
+        [TestCase(60,1, "Display shows: 00:59")]
+        public void TimeRemainingOnTimerTick(int time, int tick, string output)
         {
             _uut.StartCooking(50, time);
-            _timer.TimeRemaining.Returns(time-1);
+            _timer.TimeRemaining.Returns(time-tick);
             _timer.TimerTick += Raise.EventWith(this, EventArgs.Empty);
-            _display.ShowTime(0,59);
-            _output.Received(1).OutputLine("Display shows: 00:59");
+            _output.Received(1).OutputLine(output);
+        }
+
+        public void OnManyTicks(int time, int tick, string output)
+        {
+            _uut.StartCooking(50,time);
+
+            for (int i = 1; i < tick+1; i++)
+            {
+                _timer.TimeRemaining.Returns(time - i);
+                _timer.TimerTick += Raise.EventWith(this, EventArgs.Empty);
+            }
+            _output.Received(1).OutputLine(output);
         }
         #endregion
 
