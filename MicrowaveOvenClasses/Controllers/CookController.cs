@@ -40,8 +40,7 @@ namespace MicrowaveOvenClasses.Controllers
 
         public void StartCooking(int power, int time)
         {
-            int percent = (int)((power / POWERTUBE_MAX_POWER) * 100);//FEJL. Før blev power givet direkte her
-            myPowerTube.TurnOn(percent);
+            myPowerTube.TurnOn(power);
             myTimer.Start(time);
             isCooking = true;
         }

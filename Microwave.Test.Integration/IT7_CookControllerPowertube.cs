@@ -33,14 +33,15 @@ namespace Microwave.Test.Integration
         
         #region MainScenario
         
-        [TestCase(50)]
-        [TestCase(700)]
-        public void TestTurnsOn(int power)
+        [TestCase(50, 7)]
+        [TestCase(350, 50)]
+        [TestCase(700, 100)]
+        public void TestTurnsOn(int power, int percent)
         {
             _uut.StartCooking(power, 120);
             
             
-            _output.Received(1).OutputLine($"PowerTube works with {(int)((power/700.0) *100)} %");
+            _output.Received(1).OutputLine($"PowerTube works with {percent} %");
         }
 
         [Test]
