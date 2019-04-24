@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MicrowaveOvenClasses.Boundary;
 using MicrowaveOvenClasses.Controllers;
 using MicrowaveOvenClasses.Interfaces;
 using NSubstitute;
-using NSubstitute.Routing.Handlers;
 using NUnit.Framework;
 
 namespace Microwave.Test.Integration
@@ -37,13 +32,15 @@ namespace Microwave.Test.Integration
         }
         
         #region MainScenario
-
-        [TestCase(100)]
+        
+        [TestCase(50)]
+        [TestCase(700)]
         public void TestTurnsOn(int power)
         {
             _uut.StartCooking(power, 120);
             
-            _output.Received(1).OutputLine($"PowerTube works with {power} %");
+            
+            _output.Received(1).OutputLine($"PowerTube works with {power} W");
         }
 
         [Test]

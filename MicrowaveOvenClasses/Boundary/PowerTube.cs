@@ -16,7 +16,7 @@ namespace MicrowaveOvenClasses.Boundary
 
         public void TurnOn(int power)
         {
-            if (power < 1 || 100 < power)
+            if (power < 50 || 700 < power)//FEJL. Denne tjekkede om power lå mellem 0 og 100 - trin 7 i rapporten.
             {
                 throw new ArgumentOutOfRangeException("power", power, "Must be between 1 and 100 % (incl.)");
             }
@@ -26,7 +26,7 @@ namespace MicrowaveOvenClasses.Boundary
                 throw new ApplicationException("PowerTube.TurnOn: is already on");
             }
 
-            myOutput.OutputLine($"PowerTube works with {power} %");
+            myOutput.OutputLine($"PowerTube works with {power} W");
             IsOn = true;
         }
 
