@@ -2,10 +2,12 @@
 using System.Runtime.Serialization;
 using MicrowaveOvenClasses.Interfaces;
 
+
 namespace MicrowaveOvenClasses.Controllers
 {
     public class UserInterface : IUserInterface
     {
+        private readonly double MAX_POWER = 700.0;
         private enum States
         {
             READY, SETPOWER, SETTIME, COOKING, DOOROPEN

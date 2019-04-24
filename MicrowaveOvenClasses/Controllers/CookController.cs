@@ -10,6 +10,7 @@ namespace MicrowaveOvenClasses.Controllers
         public IUserInterface UI { set; private get; }
 
         private bool isCooking = false;
+        private double POWERTUBE_MAX_POWER = 700.0;
 
         private IDisplay myDisplay;
         private IPowerTube myPowerTube;
@@ -39,7 +40,8 @@ namespace MicrowaveOvenClasses.Controllers
 
         public void StartCooking(int power, int time)
         {
-            myPowerTube.TurnOn(power);
+            int percent = (int)((power / POWERTUBE_MAX_POWER) * 100);//FEJL. Før blev power givet direkte her
+            myPowerTube.TurnOn(percent);
             myTimer.Start(time);
             isCooking = true;
         }

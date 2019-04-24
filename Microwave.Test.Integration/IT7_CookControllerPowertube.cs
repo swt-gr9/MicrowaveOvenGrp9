@@ -40,7 +40,7 @@ namespace Microwave.Test.Integration
             _uut.StartCooking(power, 120);
             
             
-            _output.Received(1).OutputLine($"PowerTube works with {power} W");
+            _output.Received(1).OutputLine($"PowerTube works with {(int)((power/700.0) *100)} %");
         }
 
         [Test]
