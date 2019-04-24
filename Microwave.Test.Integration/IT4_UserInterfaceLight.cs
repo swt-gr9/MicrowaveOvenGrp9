@@ -25,7 +25,6 @@ namespace Microwave.Test.Integration
         private IDisplay _display;
         private ILight _light;
         private ICookController _cookController;
-        private IPowerTube _powerTube;
         private IOutput _output;
 
         #endregion

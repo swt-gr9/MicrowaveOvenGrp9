@@ -97,7 +97,7 @@ namespace Microwave.Test.Integration
 
             //Exception Scenario
             _door.Open();
-            _display.Received(1).Clear();
+            _display.Received(2).Clear();
         }
 
         [Test]
