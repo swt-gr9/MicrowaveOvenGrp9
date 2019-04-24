@@ -38,10 +38,8 @@ namespace Microwave.Test.Integration
         public void TimeRemainingOnTimerTick(int time)
         {
             _uut.StartCooking(50, time);
-            _timer.TimeRemaining.Returns(time);
-            _timer.TimerTick += Raise.EventWith(this, EventArgs.Empty);
-            //Er en TimerTick 1 sekund eller 5 sekunder?
             _timer.TimeRemaining.Returns(time-1);
+            _timer.TimerTick += Raise.EventWith(this, EventArgs.Empty);
             _display.ShowTime(0,59);
             _output.Received(1).OutputLine("Display shows: 00:59");
         }
