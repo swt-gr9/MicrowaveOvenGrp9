@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace Microwave.Test.Integration
 {
-    class IT9_TimerCookController
+    class IT9_CookControllerTimer
     {
         #region properties
 
@@ -75,10 +75,25 @@ namespace Microwave.Test.Integration
             System.Threading.Thread.Sleep(delay);
             _output.Received(1).OutputLine(output);            
         }
-        
-        public void OntimerExpire()
-        {
 
+        [TestCase(1, "PowerTube turned off", 1*61000)]
+        [TestCase(2, "PowerTube turned off", 2*61000)]
+        public void OntimerExpire(int times, string output, int delay)
+        {
+            _door.Open();
+            _door.Close();
+
+            _powerButton.Press();
+            for (int i = times; (i > 0); i--)
+            {
+                _timeButton.Press();
+            }
+
+            _startCancelButton.Press();
+
+
+            System.Threading.Thread.Sleep(delay);
+            _output.Received(1).OutputLine(output);
         }
 
         #endregion
